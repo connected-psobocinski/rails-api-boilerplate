@@ -36,5 +36,7 @@ module BoilerplateApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.hosts << "3000-coffee-shrew-gkpqywqr.ws-us08.gitpod.io"
   end
 end
