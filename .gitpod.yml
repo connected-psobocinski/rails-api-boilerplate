@@ -1,8 +1,15 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: bundle install # runs during prebuild
+  - name: App Setup
+    init: |
+      brew install rbenv
+      eval "$(rbenv init -)"
+      export PATH="$HOME/.rbenv/bin:$PATH"
+      rbenv install `cat .ruby-version`
+      rbenv global `cat .ruby-version`
+      bundle install # runs during prebuild
     command: rails s
-  
+
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
   - port: 3000
