@@ -3,6 +3,8 @@ image:
 
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
+  - name: DB Setup
+    init: while ! (mysqladmin ping 2> /dev/null); do sleep 2; echo 'Waiting for mySQL... sit tight!'; done && mysql < db/mysql/schema.sql && mysql < db/mysql/data.sql
   - name: App Setup
     init: bundle install
     command: rails s
